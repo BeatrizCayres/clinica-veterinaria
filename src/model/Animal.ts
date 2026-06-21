@@ -1,12 +1,12 @@
-type Especie = "cachorro" | "gato" | "passaro" | "reptil";
-type Porte = "pequeno" | "medio" | "grande";
+export type Especie = "cachorro" | "gato" | "passaro" | "reptil";
+export type Porte = "pequeno" | "medio" | "grande";
 
 export class Animal {
   nome: string;
   idade: number;
   peso: number;
-  especie: string;
-  porte: string;
+  especie: Especie;
+  porte: Porte;
   nomeDono: string;
   telefoneDono: string;
   cpfDono: string;
@@ -15,11 +15,11 @@ export class Animal {
     nome: string,
     idade: number,
     peso: number,
-    especie: string,
-    porte: string,
+    especie: Especie,
+    porte: Porte,
     nomeDono: string,
     telefoneDono: string,
-    cpfDono: string
+    cpfDono: string,
   ) {
     this.nome = nome;
     this.idade = idade;
@@ -56,7 +56,7 @@ export class Animal {
         " | CPF: " +
         this.cpfDono +
         " | Tel: " +
-        this.telefoneDono
+        this.telefoneDono,
     );
     console.log("=====================================");
   }

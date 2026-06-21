@@ -1,4 +1,4 @@
-import { Animal } from "./Animal";
+import { Animal, Porte } from "./Animal";
 
 export class Cachorro extends Animal {
   raca: string;
@@ -8,7 +8,7 @@ export class Cachorro extends Animal {
     nome: string,
     idade: number,
     peso: number,
-    porte: string,
+    porte: Porte,
     raca: string,
     vacinado: boolean,
     nomeDono: string,
