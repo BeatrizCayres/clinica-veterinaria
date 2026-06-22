@@ -1,3 +1,4 @@
+import { StatusConsulta } from "../enums";
 import { Animal } from "./Animal";
 
 export class Consulta {
@@ -5,7 +6,7 @@ export class Consulta {
   animal: Animal;
   veterinario: string;
   readonly dataHora: Date;
-  private status: string;
+  private status: StatusConsulta;
   private motivoCancelamento?: string;
   valorConsulta: number;
   private formaPagamento?: string;
@@ -32,14 +33,14 @@ export class Consulta {
     this.veterinario = veterinario;
     this.dataHora = dataHora;
     this.valorConsulta = valorConsulta;
-    this.status = "agendada";
+    this.status = StatusConsulta.AGENDADA;
     this.pago = false;
   }
 
   getPago(){ return this.pago; }
 
   getStatus(){ return this.status; }
-  setStatus(status:string){ return this.status = status; }
+  setStatus(status:StatusConsulta){ return this.status = status; }
 
   registrarPagamento(forma: string): void {
     if (
@@ -55,7 +56,7 @@ export class Consulta {
   }
 
   cancelar(motivo: string): void {
-    this.status = "cancelada";
+    this.status = StatusConsulta.CANCELADA;
     this.motivoCancelamento = motivo;
   }
 

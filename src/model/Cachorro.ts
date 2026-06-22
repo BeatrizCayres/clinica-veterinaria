@@ -1,4 +1,5 @@
-import { Animal, Porte } from "./Animal";
+import { Especie, Porte } from "../enums";
+import { Animal } from "./Animal";
 
 export class Cachorro extends Animal {
   raca: string;
@@ -8,6 +9,7 @@ export class Cachorro extends Animal {
     nome: string,
     idade: number,
     peso: number,
+    especie: Especie,
     porte: Porte,
     raca: string,
     vacinado: boolean,
@@ -15,7 +17,7 @@ export class Cachorro extends Animal {
     telefoneDono: string,
     cpfDono: string
   ) {
-    super(nome, idade, peso, "cachorro", porte, nomeDono, telefoneDono, cpfDono);
+    super(nome, idade, peso, especie, porte, nomeDono, telefoneDono, cpfDono);
     this.raca = raca;
     this.vacinado = vacinado;
   }

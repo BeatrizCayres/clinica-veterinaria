@@ -1,5 +1,4 @@
-export type Especie = "cachorro" | "gato" | "passaro" | "reptil";
-export type Porte = "pequeno" | "medio" | "grande";
+import { Especie, Porte } from "../enums";
 
 export class Animal {
   protected nome: string;

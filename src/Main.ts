@@ -4,6 +4,7 @@ import { Cachorro } from "./model/Cachorro";
 import { Gato } from "./model/Gato";
 import { Prontuario } from "./model/Prontuario";
 import { Estoque } from "./model/Estoque";
+import { EspecialidadeVeterinaria, Especie, Porte } from "./enums";
 
 class Main {
   static main(): void {
@@ -16,7 +17,7 @@ class Main {
       "51999990001",
       "carlos@clinica.com",
       "CRMV-1234",
-      "clinico"
+      EspecialidadeVeterinaria.CLINICO
     );
     const v2 = new Veterinario(
       "Dra. Ana",
@@ -24,7 +25,7 @@ class Main {
       "51999990002",
       "ana@clinica.com",
       "CRMV-5678",
-      "cirurgiao"
+      EspecialidadeVeterinaria.CIRURGIAO
     );
 
     clinica.veterinarios.push(v1);
@@ -35,7 +36,8 @@ class Main {
       "Rex",
       3,
       12.5,
-      "grande",
+      Especie.CACHORRO,
+      Porte.GRANDE,
       "Labrador",
       false,
       "João Silva",
@@ -47,6 +49,8 @@ class Main {
       "Mimi",
       2,
       4.0,
+      Especie.GATO,
+      Porte.PEQUENO,
       true,
       "curta",
       "Maria Souza",
