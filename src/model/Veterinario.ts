@@ -2,10 +2,10 @@ import { Pessoa } from "./Pessoa";
 import { Consulta } from "./Consulta";
 
 export class Veterinario extends Pessoa {
-  crmv: string;
+  readonly crmv: string;
   especialidade: string;
-  historicoConsultas: Consulta[] = [];
-  disponivel: boolean = true;
+  private historicoConsultas: Consulta[] = [];
+  private disponivel: boolean = true;
 
   constructor(
     nome: string,
@@ -18,6 +18,10 @@ export class Veterinario extends Pessoa {
     super(nome, cpf, telefone, email);
     this.crmv = crmv;
     this.especialidade = especialidade;
+  }
+
+  estaDisponivel(): boolean {
+    return this.disponivel;
   }
 
   calcularValorConsulta(tipoConsulta: string): number {
@@ -33,7 +37,7 @@ export class Veterinario extends Pessoa {
   }
 
   finalizarConsulta(c: Consulta): void {
-    c.status = "finalizada";
+    c.setStatus("finalizada");
     this.historicoConsultas.push(c);
     this.disponivel = true;
   }

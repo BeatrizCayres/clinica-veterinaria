@@ -1,8 +1,8 @@
 export class Pessoa {
-  nome: string;
-  cpf: string;
-  telefone: string;
-  email: string;
+  protected nome: string;
+  protected cpf: string;
+  protected telefone: string;
+  protected email: string;
 
   constructor(nome: string, cpf: string, telefone: string, email: string) {
     this.nome = nome;
@@ -10,6 +10,8 @@ export class Pessoa {
     this.telefone = telefone;
     this.email = email;
   }
+
+  getNomePessoa(){ return this.nome; }
 
   static validarCPF(cpf: string): boolean {
     return cpf !== null && cpf.length === 11;

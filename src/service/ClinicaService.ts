@@ -17,14 +17,14 @@ export class ClinicaService {
     let vet: Veterinario | undefined;
 
     for (const a of this.animais) {
-      if (a.nome === nomeAnimal) {
+      if (a.getNome() === nomeAnimal) {
         animal = a;
         break;
       }
     }
 
     for (const v of this.veterinarios) {
-      if (v.nome === nomeVeterinario) {
+      if (v.getNomePessoa() === nomeVeterinario) {
         vet = v;
         break;
       }
@@ -38,7 +38,7 @@ export class ClinicaService {
       throw new Error("Veterinário não encontrado: " + nomeVeterinario);
     }
 
-    if (!vet.disponivel) {
+    if (!vet.estaDisponivel()) {
       throw new Error("Veterinário indisponível");
     }
 
@@ -65,7 +65,7 @@ export class ClinicaService {
 
         console.log(
           "SMS enviado para " +
-            c.animal.nomeDono +
+            c.animal.getNomeDono() +
             ": sua consulta foi cancelada. Motivo: " +
             motivo
         );
@@ -85,7 +85,7 @@ export class ClinicaService {
 
     for (const c of this.consultas) {
       c.imprimirResumo();
-      if (c.pago) receita += c.valorConsulta;
+      if (c.getPago()) receita += c.valorConsulta;
       total++;
     }
 
@@ -105,12 +105,12 @@ export class ClinicaService {
 
   calcularDesconto(c: Consulta): number {
     if (
-      c.animal.especie === "cachorro" &&
+      c.animal.getEspecie() === "cachorro" &&
       c.valorConsulta > 200
     ) {
       return c.valorConsulta * 0.1;
     }
-    if (c.animal.especie === "gato") {
+    if (c.animal.getEspecie() === "gato") {
       return c.valorConsulta * 0.05;
     }
 
@@ -123,7 +123,7 @@ export class ClinicaService {
 
   buscarAnimal(nome: string): Animal | undefined {
     for (const a of this.animais) {
-      if (a.nome === nome) return a;
+      if (a.getNome() === nome) return a;
     }
 
     return undefined;
@@ -131,7 +131,7 @@ export class ClinicaService {
 
   buscarVeterinario(nome: string): Veterinario | undefined {
     for (const v of this.veterinarios) {
-      if (v.nome === nome) return v;
+      if (v.getNomePessoa() === nome) return v;
     }
     
     return undefined;

@@ -10,20 +10,28 @@ interface Registravel {
 }
 
 export class Prontuario implements Registravel {
-  id: number;
+  readonly id: number;
   animal: Animal;
-  observacoes: string[] = [];
-  dataCriacao: Date;
+  private observacoes: string[] = [];
+  readonly dataCriacao: Date;
   peso: number;
-  diagnostico?: string;
-  prescricao?: string;
+  private diagnostico?: string;
+  private prescricao?: string;
 
   constructor(id: number, animal: Animal) {
     this.id = id;
     this.animal = animal;
     this.dataCriacao = new Date();
-    this.peso = animal.peso;
+    this.peso = animal.getPeso();
   }
+
+  getDiagnostico(){ return this.diagnostico; }
+  setDiagnostico(diagnostico:string){ return this.diagnostico = diagnostico; }
+
+  getPrescricao(){ return this.prescricao; }
+  setPrescricao(prescricao:string){ return this.prescricao = prescricao; }
+
+  getObservacao(){ return this.observacoes; }
 
   registrar(): void {
     console.log("Prontuário #" + this.id + " registrado.");
@@ -41,7 +49,7 @@ export class Prontuario implements Registravel {
       "Prontuário #" +
         this.id +
         " | Animal: " +
-        this.animal.nome +
+        this.animal.getNome() +
         " | Diagnóstico: " +
         this.diagnostico
     );
@@ -53,7 +61,7 @@ export class Prontuario implements Registravel {
 
   enviarEmail(): void {
     console.log(
-      "Enviando prontuário por email para " + this.animal.nomeDono
+      "Enviando prontuário por email para " + this.animal.getNomeDono()
     );
   }
 

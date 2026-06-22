@@ -76,8 +76,8 @@ class Main {
 
     // ---- Prontuário ------------------------------------------------------
     const p = new Prontuario(1, dog);
-    p.diagnostico = "Otite leve";
-    p.prescricao = "Antifúngico tópico";
+    p.setDiagnostico("Otite leve");
+    p.setPrescricao("Antifúngico tópico");
     p.adicionarObservacao("Animal agitado durante consulta");
     p.enviarEmail();
 
@@ -95,7 +95,7 @@ class Main {
     estoque.alertarEstoqueBaixo();
 
     estoque.getItens().splice(0);
-    console.log("Itens após clear externo: " + estoque.itens.length);
+    console.log("Itens após clear externo: " + estoque.getItens().length);
 
     // ---- Relatórios ------------------------------------------------------
     clinica.gerarRelatorioConsultas();

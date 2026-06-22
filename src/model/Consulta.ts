@@ -1,15 +1,15 @@
 import { Animal } from "./Animal";
 
 export class Consulta {
-  id: number;
+  readonly id: number;
   animal: Animal;
   veterinario: string;
-  dataHora: Date;
-  status: string;
-  motivoCancelamento?: string;
+  readonly dataHora: Date;
+  private status: string;
+  private motivoCancelamento?: string;
   valorConsulta: number;
-  formaPagamento?: string;
-  pago: boolean;
+  private formaPagamento?: string;
+  private pago: boolean;
 
   constructor(
     id: number,
@@ -36,6 +36,11 @@ export class Consulta {
     this.pago = false;
   }
 
+  getPago(){ return this.pago; }
+
+  getStatus(){ return this.status; }
+  setStatus(status:string){ return this.status = status; }
+
   registrarPagamento(forma: string): void {
     if (
       forma === "pix" ||
@@ -59,7 +64,7 @@ export class Consulta {
       "[Consulta #" +
         this.id +
         "] " +
-        this.animal.nome +
+        this.animal.getNome() +
         " | Vet: " +
         this.veterinario +
         " | Status: " +

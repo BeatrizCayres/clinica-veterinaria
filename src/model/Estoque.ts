@@ -21,7 +21,7 @@ export class Estoque {
     }
   };
 
-  itens: InstanceType<typeof Estoque.Medicamento>[] = [];
+  private itens: InstanceType<typeof Estoque.Medicamento>[] = [];
 
   adicionar(m: InstanceType<typeof Estoque.Medicamento>): void {
     this.itens.push(m);
